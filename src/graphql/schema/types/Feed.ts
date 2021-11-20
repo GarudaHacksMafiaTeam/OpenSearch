@@ -37,16 +37,7 @@ export const FeedQueries = extendType({
       resolve: (_, { id, showComments, showReactions }, ctx) => {
         return ctx.prisma.feed.findUnique({
           include: {
-            comments: {
-              include: {
-                user: true
-              }
-            },
-            openSource: {
-              include: {
-                profile: true
-              }
-            },
+            comments: showComments,
             reactions: showReactions
           },
           where: { id },
@@ -79,16 +70,8 @@ export const FeedQueries = extendType({
             },
           },
           include: {
-            openSource: {
-              include: {
-                profile: true
-              }
-            },
-            comments: {
-              include: {
-                user: true
-              }
-            },
+            openSource: true,
+            comments: showComments,
             reactions: showReactions
           },
         })

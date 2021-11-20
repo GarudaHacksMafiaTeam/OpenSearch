@@ -4,7 +4,6 @@ import Avatar from 'react-avatar'
 import { getSession } from "next-auth/client"
 import getApolloClient from 'controller/getApolloClient'
 import { gql } from "@apollo/client"
-import Head from 'next/head'
 
 function Profile({ data: user, error }) {
   if (error) {
@@ -12,9 +11,6 @@ function Profile({ data: user, error }) {
   }
   return (
     <div className={styles.profilePage}>
-      <Head>
-        <title>{user.name ? user.name : "Your Profile"} | OpenSearch</title>
-      </Head>
       <div className={styles.rightPartPage}>
         <h1 className={styles.profileTitle}>Your Profile</h1>
         <div className={styles.bodyProfile}>
@@ -44,6 +40,7 @@ function Profile({ data: user, error }) {
     </div>
   );
 }
+
 
 export const exampleQuery = gql`
   query User($email: String) {

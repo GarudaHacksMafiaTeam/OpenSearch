@@ -4,7 +4,7 @@ import Avatar from 'react-avatar'
 import { BiHeart, BiComment } from 'react-icons/bi'
 import { useRouter } from 'next/router'
 
-const FeedCard = ({ id, name, description, content, totalLikes, totalComments }) => {
+const FeedCard = ({ id }) => {
   const router = useRouter()
 
   return <div className={styles.base} onClick={() => router.push(`/feeds/${id}`)}>
@@ -12,24 +12,26 @@ const FeedCard = ({ id, name, description, content, totalLikes, totalComments })
       <Avatar size="3rem" className={styles.logo} />
       <div>
         <h1>
-          <strong>{name}</strong>
+          <strong>Name</strong>
         </h1>
         <h2>
-          {description}
+          Description of the opensource
         </h2>
       </div>
     </div>
     <p>
-      {content}
+      amet sed vel error aspernatur. reiciendis cum eligendi voluptatem praesentium voluptas nihil facere.
+      cupiditate eligendi quos dignissimos autem aut amet nostrum. amet sed vel error aspernatur. reiciendis cum
+      eligendivoluptatem praesentium voluptas nihil facere. Cupiditate eligendi quos dignissimos autem aut amet
     </p>
     <div className={styles.icons}>
       <div className={styles.iconWrapper}>
         <BiHeart size='2rem' />
-        <h1>{totalLikes}</h1>
+        <h1>200</h1>
       </div>
       <div className={styles.iconWrapper}>
         <BiComment size='2rem' />
-        <h1>{totalComments}</h1>
+        <h1>2</h1>
       </div>
     </div>
   </div>

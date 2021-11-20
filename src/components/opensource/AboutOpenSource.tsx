@@ -1,5 +1,4 @@
 import styles from "styles/opensource/aboutopensource.module.css"
-import Head from "next/head"
 
 const AboutOpenSource = () => {
   const data = {
@@ -12,9 +11,6 @@ const AboutOpenSource = () => {
 
   return (
     <div className={styles.aboutOpenSource}>
-      <Head>
-        <title>The Blender Foundation | OpenSearch</title>
-      </Head>
       <h1 className={styles.subtitles}>Overview</h1>
       <p className={styles.infoDesc}>
         {data.overview}

@@ -1,4 +1,3 @@
-import Layout from 'components/opensource/Layout'
 import FeedCard from 'components/feeds/FeedCard'
 
 const OpenSourceProfile = () => {
