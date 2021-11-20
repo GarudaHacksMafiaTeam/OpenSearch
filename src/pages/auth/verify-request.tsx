@@ -1,9 +1,13 @@
 import styles from "styles/auth/verify-request/index.module.css"
 import Image from 'next/image'
+import Head from 'next/head'
 
 export default function VerifyRequest({ csrfToken }) {
   return (
     <div className={styles.verifyRequestPage}>
+      <Head>
+        <title>Registration | OpenSearch</title>
+      </Head>
       <div className={styles.leftPart}>
         <Image src="/assets/verify-request/verify-request.svg" alt="me" width="480" height="625" />
       </div>
