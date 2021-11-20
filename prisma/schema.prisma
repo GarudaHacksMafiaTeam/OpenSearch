@@ -42,16 +42,33 @@ model Session {
   @@map(name: "sessions")
 }
 
+
 model User {
-  id            Int       @default(autoincrement()) @id
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime? @map(name: "email_verified")
-  image         String?
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @default(now()) @map(name: "updated_at")
+  id                  Int       @default(autoincrement()) @id
+  email               String?   @unique
+  name                String?
+  image               String?
+  emailVerified       DateTime? @map(name: "email_verified")
+  createdAt           DateTime  @default(now()) @map(name: "created_at")
+  updatedAt           DateTime  @default(now()) @map(name: "updated_at")
+  profile             UserProfile?
+  comments            Comment[]
+  commentsToComment   CommentToComment[]
+  tasksAccessible     Task[]         
+  taskCards           TaskCard[]         
+  commentsToCards     TaskCardComment[]     
+  accessToOpenSources AccessToOpenSource[] 
+  taskChatMessages    TaskChatMessage[]
+  reactions           Reaction[]
+  notifications        Notification[]
 
   @@map(name: "users")
+}
+
+model UserProfile {
+  user          User    @relation(fields: [userId], references: [id])
+  userId        Int     @unique
+  description   String? 
 }
 
 model VerificationRequest {
@@ -63,4 +80,137 @@ model VerificationRequest {
   updatedAt  DateTime @default(now()) @map(name: "updated_at")
 
   @@map(name: "verification_requests")
+}
+
+model OpenSource {
+  id            Int      @default(autoincrement()) @id
+  profile       OpenSourceProfile?
+  userAccesses  AccessToOpenSource[] 
+  feeds         Feed[]
+  tasks         Task[]
+}
+
+model OpenSourceProfile {
+  id            Int      @default(autoincrement()) @id
+  openSource    OpenSource @relation(fields: [openSourceId], references: [id])
+  openSourceId  Int     @unique
+  name          String?
+  image         String?
+  description   String? 
+}
+
+enum Role {
+  OWNER
+  CONTRIBUTOR
+}
+
+model AccessToOpenSource {
+  id            Int      @default(autoincrement()) @id
+  user          User    @relation(fields: [userId], references: [id])
+  userId        Int     
+  openSource    OpenSource  @relation(fields: [openSourceId], references: [id])
+  openSourceId  Int   
+  role          Role        @default(CONTRIBUTOR)
+}
+
+model Task {
+  id            Int      @default(autoincrement()) @id
+  openSource    OpenSource  @relation(fields: [openSourceId], references: [id])
+  openSourceId  Int   
+  title         String
+  description   String
+  contributors  User[]
+  cards         TaskCard[]
+  chatMessages  TaskChatMessage[]
+}
+
+enum Progress {
+  NEW
+  READY
+  ONGOING
+  DONE
+}
+
+model TaskCard {
+  id            Int      @default(autoincrement()) @id
+  task          Task     @relation(fields: [taskId], references: [id])
+  taskId        Int   
+  asignee       User    @relation(fields: [asigneeId], references: [id])
+  asigneeId     Int     
+  createdAt     DateTime   @default(now())
+  title         String
+  description   String
+  progress      Progress
+  comments      TaskCardComment[]
+}
+
+model TaskCardComment {
+  id            Int      @default(autoincrement()) @id
+  taskCard      TaskCard     @relation(fields: [taskCardId], references: [id])
+  taskCardId    Int   
+  user          User    @relation(fields: [userId], references: [id])
+  userId        Int     
+  content       String
+}
+
+model TaskChatMessage {
+  id            Int      @default(autoincrement()) @id
+  task          Task     @relation(fields: [taskId], references: [id])
+  taskId        Int   
+  user          User    @relation(fields: [userId], references: [id])
+  userId        Int     
+  createdAt     DateTime   @default(now())
+  content       String
+}
+
+model Feed {
+  id            Int        @id @default(autoincrement())
+  createdAt     DateTime   @default(now())
+  title         String
+  content       String
+  published     Boolean    @default(false)
+  openSource    OpenSource @relation(fields: [openSourceId], references: [id])
+  openSourceId  Int
+  comments      Comment[]
+  reactions     Reaction[]
+}
+
+model Comment {
+  id         Int        @id @default(autoincrement())
+  createdAt  DateTime   @default(now())
+  content    String
+  feed       Feed       @relation(fields: [feedId], references: [id])
+  feedId     Int
+  user       User       @relation(fields: [userId], references: [id])
+  userId     Int 
+  comments   CommentToComment[]
+}
+
+model CommentToComment {
+  id              Int        @id @default(autoincrement())
+  createdAt       DateTime   @default(now())
+  content         String
+  firstComment    Comment @relation(fields: [firstCommentId], references: [id])
+  firstCommentId  Int
+  user            User       @relation(fields: [userId], references: [id])
+  userId          Int 
+}
+
+model Reaction {
+  id              Int        @id @default(autoincrement())
+  feed            Feed       @relation(fields: [feedId], references: [id])
+  feedId          Int
+  user            User       @relation(fields: [userId], references: [id])
+  userId          Int 
+}
+
+
+model Notification {
+  id              Int        @id @default(autoincrement())
+  user            User       @relation(fields: [userId], references: [id])
+  userId          Int 
+  createdAt       DateTime   @default(now())
+  content         String
+  link            String
+  read            Boolean    @default(false)
 }
