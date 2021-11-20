@@ -1,0 +1,42 @@
+/* nav */
+
+.navbarbase {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-left: 3.75rem;
+	padding-right: 3.75rem;
+	padding-top: 2.5rem;
+	padding-bottom: 0rem;
+}
+
+.brand {
+	font-size: x-large;
+	transition: 0.3s all ease-in-out;
+}
+
+.brand:hover{
+	color: #7BD0FF;
+}
+
+.navlink>* {
+	margin-left: 3.25rem;
+	color: white;
+	transition: 0.3s all ease-in-out;
+}
+
+.navlink>*:hover {
+	color: #7BD0FF;
+}
+
+.button {
+	background-color: #7BD0FF;
+	padding: 0.75rem;
+	color: black;
+	border-radius: 0.5rem;
+	transition: 0.3s all ease-in-out;
+}
+
+.button:hover {
+	background-color: #609FFD;
+}
