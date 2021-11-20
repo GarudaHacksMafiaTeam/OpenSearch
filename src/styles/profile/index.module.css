@@ -1,0 +1,85 @@
+.profilePage {
+  color: #fff;
+  width: 85vw;
+}
+
+.rightPartPage {
+  margin: 0 0 0 auto;
+  margin: 20px 50px;
+  background-color: #0E111F;
+}
+.profileTitle {
+  font-size: 25px;
+  margin: 25px 0 10px;
+}
+.bodyProfile {
+  background: #191E37;
+  border-radius: 23px;
+  padding: 50px;
+}
+.mainProfile {
+  display: flex;
+  justify-content: space-between;
+}
+.imageContainer {
+  width: 155px;
+  height: 155px;
+  margin-right: 20px;
+  flex-basis: 155px;
+}
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10%;
+}
+.profileTextContainer {
+  flex-basis: 85%;
+}
+.profileName {
+  font-size: 30px;
+  margin: 10px 0;
+}
+.profileCampus {
+  font-size: 25px;
+  margin: 10px 0;
+}
+.profileText {
+  font-size: 18px;
+  margin: 10px 0;
+  flex-basis: 70%;
+}
+.profileButton {
+  width: 123px;
+  height: 42px;
+  background-color: #7BD0FF;
+  border-radius: 6px;
+  margin: auto 0 0 auto;
+  display: block;
+  color: #0E1957
+}
+
+.profileOpenSources {
+  background: #191E37;
+  border-radius: 23px;
+  margin: 5px;
+  padding: 50px;
+}
+.openSourceIconContainer {
+  display: flex;
+  gap: 1rem;
+}
+.openSourceIconContainer img {
+  margin: 5px;
+  width: 60px;
+  height: 60px;
+  border-radius: 13px;
+}
+.openSourceButton {
+  width: 204px;
+  height: 45px;
+  background: #7BD0FF;
+  border-radius: 6px;
+  color:#0E1957;
+  display: block;
+  margin: 0 0 0 auto;
+}
