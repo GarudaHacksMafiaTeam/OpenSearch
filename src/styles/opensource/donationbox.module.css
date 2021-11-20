@@ -1,0 +1,50 @@
+.donationBox {
+  background: #191E37;
+  padding: 2rem;
+  color: #fff;
+  border-radius: 12px;
+}
+.form {
+  color: #fff;
+}
+.donationLabel {
+  font-size: 1.5rem;
+}
+.inputForm {
+  margin: 5px 0 15px;
+}
+
+.inputForm input {
+  width: 100%;
+  height: 50px;
+  border-radius: 7px;
+  background-color: transparent;
+  border: 3px solid #7BD0FF;
+  font-size: 1.25rem;
+  color: #fff;
+}
+.inputForm textarea {
+  width: 100%;
+  height: 200px;
+  border-radius: 7px;
+  background-color: transparent;
+  border: 3px solid #7BD0FF;
+  font-size: 1.25rem;
+  color: #fff;
+}
+.inputForm input::placeholder {
+  color: inherit;
+}
+.submitPart {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.btnSubmit {
+  width: 102px;
+  height: 47px;
+  background: #7BD0FF;
+  border-radius: 6px;
+  font-size: 24px;
+  color: #000;
+}
