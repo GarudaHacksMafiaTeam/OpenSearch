@@ -1,0 +1,60 @@
+.base {
+  background-color: #191E37;
+  color:whitesmoke;
+  padding: 1.5rem;
+  margin: 1.5rem;
+  border-radius: 15px;
+}
+
+.logo {
+  border-radius: 12px;
+}
+
+.heading {
+  display:flex;
+  gap:1rem;
+  margin-bottom:1rem;
+}
+
+.icons {
+  margin:1rem 0;
+  display:flex;
+  gap:1rem;
+}
+
+.iconWrapper{
+  display:flex;
+  gap:0.5rem;
+  align-items: center;
+  font-size:1.3rem;
+}
+
+.userInput {
+  display:flex;
+  gap:0.5rem;
+  padding:1rem;
+}
+
+.inputMessage {
+  background-color:inherit;
+  border: 2px solid #7BD0FF;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.inputMessage:focus {
+  outline:none;
+}
+
+.message {
+  display:flex;
+  gap:0.5rem;
+  padding:1rem;
+}
+
+.payload {
+  background-color: rgba(123, 208, 255, 0.12);
+  padding:1rem;
+  border-radius:5px;
+}
