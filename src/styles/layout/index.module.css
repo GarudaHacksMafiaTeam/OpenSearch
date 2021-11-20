@@ -1,0 +1,16 @@
+.layout {
+  display:flex;
+}
+
+.base {
+  background-color:#0E111F;
+  height: 100vh;
+  width: 100%;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;  
+}
+
+.base::-webkit-scrollbar {
+  display: none;
+}

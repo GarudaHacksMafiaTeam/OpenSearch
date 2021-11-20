@@ -1,0 +1,29 @@
+.base {
+  position: sticky;
+  top: 0;
+  background-color: transparent;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:1rem;
+  backdrop-filter:blur(5px);
+}
+
+.brand {
+  font-size:1.25rem;
+}
+
+.rightnav {
+  display:flex;
+  gap: 0.5rem;
+}
+
+.name {
+  font-size:1rem;
+}
+.bell {
+  cursor: pointer;
+}
+.notifContainer {
+  position: relative;
+}

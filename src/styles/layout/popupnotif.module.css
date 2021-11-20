@@ -1,0 +1,15 @@
+.popupnotif {
+  background-color: #25334F;
+  position: absolute;
+  width: 15vw;
+  right: -7.5vw;
+  top: 2rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  color: #fff;
+}
+.notifContainer {
+  border-bottom: 3px solid #fff;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}

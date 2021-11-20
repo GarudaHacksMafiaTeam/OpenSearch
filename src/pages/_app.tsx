@@ -2,7 +2,10 @@ import React from 'react'
 import { Provider } from 'next-auth/client'
 import { AppProps } from 'next/app'
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import { NotificationProvider } from 'context/notification'
+import Layout from 'components/layout/index'
 import '../styles/global.css'
+import Head from 'next/head'
 
 const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
@@ -11,10 +14,23 @@ const apolloClient = new ApolloClient({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Provider session={pageProps.session}>
-      <ApolloProvider client={apolloClient}>
-        <Component {...pageProps} />
-      </ApolloProvider>
-    </Provider>
+    <>
+      <Head>
+        <title>OpenSearch</title>
+        <link rel="shortcut icon" href="assets/favicon.ico" />
+        <meta name="description" content="Create, Search, and Manage your Open Source Project" />
+        <meta name="keywords" content="opensource, project" />
+      </Head>
+      <Provider session={pageProps.session}>
+        <ApolloProvider client={apolloClient}>
+          <NotificationProvider>
+            <Layout session={pageProps.session}>
+              <Component {...pageProps} />
+            </Layout>
+          </NotificationProvider>
+        </ApolloProvider>
+      </Provider>
+    </>
   )
 }
+
