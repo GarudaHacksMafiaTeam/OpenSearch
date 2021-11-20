@@ -1,3 +1,24 @@
+@tailwind base;
+
+/* Write your own custom base styles here */
+
+/* Start purging... */
+@tailwind components;
+/* Stop purging. */
+
+/* Write your own custom component styles here */
+.btn-blue {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+}
+
+.btn-green {
+  @apply bg-green-500 text-white font-bold py-2 px-4 rounded;
+}
+
+/* Start purging... */
+@tailwind utilities;
+/* Stop purging. */
+
 @font-face {
   font-family: 'Poppins';
   font-style: normal;
@@ -28,7 +49,4 @@
 
 h1, h2, h3, h4, h5, h6 {
   color: whitesmoke;
-}
-body {
-  margin: 0;
 }
