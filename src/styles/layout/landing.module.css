@@ -1,0 +1,48 @@
+/* base */
+
+.base {
+    background: linear-gradient(180deg, #273C8A 0%, #000000 100%);
+	height: auto;
+}
+
+/* hero */
+
+.headline {
+	height: inherit;
+	display: flex;
+	align-items: center;
+	height: 60vh;
+}
+
+.left {
+	margin-left: 3.75rem;
+	width: 40vw;
+}
+
+.desc {
+	margin-bottom: 1.25rem;
+}
+
+.title {
+	font-size: 3rem;
+}
+
+.red {
+	color: #F35A59;
+}
+
+.button {
+	background-color: #7BD0FF;
+	padding: 0.75rem;
+	color: black;
+	border-radius: 0.5rem;
+	transition: 0.3s all ease-in-out;
+}
+
+.button:hover {
+	background-color: #609FFD;
+}
+
+.right {
+	margin-right: 3.75rem;
+}
