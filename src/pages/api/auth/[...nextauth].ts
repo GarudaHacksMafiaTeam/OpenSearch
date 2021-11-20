@@ -12,31 +12,22 @@ export default authHandler
 
 const options = {
   providers: [
-    Providers.Twitch({
-      clientId: process.env.PROVIDER_TWITCH_CLIENT_ID,
-      clientSecret: process.env.PROVIDER_TWITCH_CLIENT_SECRET,
-    }),
-    Providers.BattleNet({
-      clientId: process.env.PROVIDER_BATTLENET_ID,
-      clientSecret: process.env.PROVIDER_BATTLENET_SECRET,
-      region: process.env.PROVIDER_BATTLENET_REGION,
-    }),
-    Providers.GitHub({
-      clientId: process.env.PROVIDER_GITHUB_ID,
-      clientSecret: process.env.PROVIDER_GITHUB_SECRET,
-    }),
     Providers.Email({
       server: {
-        host: process.env.PROVIDER_SMTP_HOST,
-        port: Number(process.env.PROVIDER_SMTP_PORT),
+        host: process.env.EMAIL_SERVER_HOST,
+        port: process.env.EMAIL_SERVER_PORT,
         auth: {
-          user: process.env.PROVIDER_SMTP_USER,
-          pass: process.env.PROVIDER_SMTP_PASSWORD,
+          user: process.env.EMAIL_SERVER_USER,
+          pass: process.env.EMAIL_SERVER_PASSWORD,
         },
       },
-      from: process.env.PROVIDER_SMTP_FROM,
+      from: process.env.EMAIL_FROM,
     }),
   ],
+  pages: {
+    signIn: "/auth/signin",
+    verifyRequest: '/auth/verify-request',
+  },
   adapter: Adapters.Prisma.Adapter({
     prisma,
   }),
