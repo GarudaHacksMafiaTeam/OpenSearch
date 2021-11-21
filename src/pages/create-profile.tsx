@@ -68,26 +68,3 @@ const CreateProfile = () => {
 }
 
 export default CreateProfile;
-
-{/* <div className={styles.container}>
-<div>
-	<h1 className={styles.title}>Fill your profile!</h1>
-	<div className={styles.selfContainer}>
-		<div>
-			<Avatar src="" />
-		</div>
-		<div>
-			<div>
-				<div>
-					Name:
-					<input type="text" className={styles.inputForm} name="name" id="name" />
-				</div>
-			</div>
-		</div>
-	</div>
-	<div className={styles.bioContainer}>
-		Bio
-		<textarea className={styles.inputForm}></textarea>
-	</div>
-</div>
-</div> */}
