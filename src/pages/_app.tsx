@@ -7,6 +7,7 @@ import { OpenSourceProvider } from 'context/opensource'
 import Layout from 'components/layout/index'
 import '../styles/global.css'
 import Head from 'next/head'
+import NextNProgress from "nextjs-progressbar";
 
 const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
@@ -26,7 +27,8 @@ export default function App({ Component, pageProps }: AppProps) {
         <ApolloProvider client={apolloClient}>
           <NotificationProvider>
             <OpenSourceProvider>
-              <Layout session={pageProps.session}>
+              <Layout >
+                <NextNProgress height={6} />
                 <Component {...pageProps} />
               </Layout>
             </OpenSourceProvider>
