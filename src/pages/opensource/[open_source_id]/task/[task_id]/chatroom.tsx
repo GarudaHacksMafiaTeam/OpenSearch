@@ -4,31 +4,27 @@ import Avatar from 'react-avatar'
 const ChatRoom = () => {
   return (
     <div className={styles.base}>
-      {[1, 2, 3].map((x, index) => <Message key={index} />)}
-      <SelfMessage />
+      {["Helloo everyone!", "My name is Azhar, and i will be the main maintainer for this task", "We will have our first meeting soon!"].map((x, index) => <Message key={index} message={x} />)}
+      {["Hello everyone, nice to meet you guys and welcome", "Copy that azhar!"].map((x, index) => <SelfMessage key={index} message={x} />)}
       <input className={styles.inputMessage} placeholder="Add Message..." />
     </div>
   );
 }
 
-const Message = () => (
+const Message = ({ message }) => (
   <div className={styles.message}>
     <Avatar round size="2.5rem" />
     <div className={styles.payload}>
-      amet sed vel error aspernatur. reiciendis cum eligendi voluptatem praesentium voluptas nihil facere.
-      cupiditate eligendi quos dignissimos autem aut amet nostrum. amet sed vel error aspernatur. reiciendis cum
-      eligendivoluptatem praesentium voluptas nihil facere. Cupiditate eligendi quos dignissimos autem aut amet
+      {message}
     </div>
   </div>
 )
 
 
-const SelfMessage = () => (
+const SelfMessage = ({ message }) => (
   <div className={styles.selfmessage}>
     <div className={styles.selfpayload}>
-      amet sed vel error aspernatur. reiciendis cum eligendi voluptatem praesentium voluptas nihil facere.
-      cupiditate eligendi quos dignissimos autem aut amet nostrum. amet sed vel error aspernatur. reiciendis cum
-      eligendivoluptatem praesentium voluptas nihil facere. Cupiditate eligendi quos dignissimos autem aut amet
+      {message}
     </div>
     <Avatar round size="2.5rem" />
   </div>

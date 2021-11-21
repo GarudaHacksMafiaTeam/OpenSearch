@@ -22,7 +22,7 @@ const TaskCardPage = () => {
       <br />
       <hr />
       <UserInput />
-      {[1, 2, 3].map((x, index) => <Message key={index} />)}
+      {[1].map((x, index) => <Message key={index} />)}
     </div>
   );
 }
