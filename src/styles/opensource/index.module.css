@@ -1,0 +1,38 @@
+.openSourceHeader {
+  background: #191E37;
+  border-radius: 22px;
+  margin: 1.5rem;
+  padding: 1.5rem;
+  display: flex;
+  gap: 3rem;
+}
+.iconContainer img {
+  width: 100%;
+  height: 100%;
+  border-radius: 13px;
+}
+.openSourceInfo {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.openSourceInfo h1 {
+  font-size: 50px;
+}
+.openSourceInfo p {
+  font-size: 20px;
+}
+.optionsContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: auto 0 0;
+  font-size: 20px;
+}
+.optionsContainer h2:hover {
+  cursor: pointer;
+}
+.clickedOption {
+  color:#7BD0FF;
+  border-bottom: 3px solid #7BD0FF;
+}
