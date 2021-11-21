@@ -3,7 +3,6 @@ import styles from 'styles/explore/index.module.css'
 import Masonry from 'react-masonry-css'
 import ExploreCard from 'components/explore/ExploreCard'
 import Head from 'next/head'
-import getApolloClient from 'controller/getApolloClient'
 import { gql, useQuery } from "@apollo/client"
 import Loading from 'components/index/Loading'
 
@@ -45,6 +44,5 @@ const getOpenSourceProfiles = gql`
     }
   }
 `
-
 
 export default Explore

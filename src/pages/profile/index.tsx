@@ -2,13 +2,13 @@ import React from 'react'
 import styles from "styles/profile/index.module.css"
 import Avatar from 'react-avatar'
 import { getSession } from "next-auth/client"
-import getApolloClient from 'controller/getApolloClient'
-import { gql, useMutation } from "@apollo/client"
+import { gql, useMutation, useQuery } from "@apollo/client"
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import ReactModal from 'react-modal';
 import { useState } from 'react';
 import axios from 'axios'
+import Loading from 'components/index/Loading'
 // import { BiUpload } from 'react-icons/bi'
 
 const CREATE_PROFILE = gql`
@@ -34,7 +34,14 @@ const UPDATE_PROFILE = gql`
   }
 `
 
-function Profile({ data: { user }, error }) {
+function Profile({ error, email }) {
+  const { data: { user }, loading } = useQuery(
+    GET_USER,
+    {
+      notifyOnNetworkStatusChange: true,
+      variables: { email }
+    }
+  )
   const [createProfile] = useMutation(CREATE_PROFILE, { fetchPolicy: "network-only" });
   const [updateProfile] = useMutation(UPDATE_PROFILE, { fetchPolicy: "network-only" });
   const router = useRouter()
@@ -81,6 +88,9 @@ function Profile({ data: { user }, error }) {
     router.reload()
   }
 
+  if (loading) {
+    return <Loading />
+  }
   if (error) {
     return <div>{error}</div>
   }
@@ -185,16 +195,11 @@ export const GET_USER = gql`
 `
 
 export async function getServerSideProps(ctx) {
-  const apolloClient = getApolloClient()
   try {
     const { user } = await getSession(ctx)
-    const { data } = await apolloClient.query({
-      query: GET_USER,
-      variables: { email: user.email }
-    })
     return {
       props: {
-        data: data
+        email: user.email
       }
     }
   } catch (err) {
