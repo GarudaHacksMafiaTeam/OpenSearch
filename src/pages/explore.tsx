@@ -34,26 +34,19 @@ const getOpenSourceProfiles = gql`
 
 export async function getStaticProps(_context) {
   const apolloClient = getApolloClient()
-  try {
-    const { data } = await apolloClient.query({
-      query: getOpenSourceProfiles,
-      variables: {
-        skip: 0,
-        take: 5,
-      }
-    })
-    return {
-      props: {
-        data: data
-      }
+  const { data } = await apolloClient.query({
+    query: getOpenSourceProfiles,
+    variables: {
+      skip: 0,
+      take: 5,
     }
-  } catch (err) {
-    return {
-      props: {
-        error: err
-      }
+  })
+  return {
+    props: {
+      data: data
     }
   }
 }
+
 
 export default Explore

@@ -53,24 +53,16 @@ export const getFeeds = gql`
 
 export async function getStaticProps(_context) {
   const apolloClient = getApolloClient()
-  try {
-    const { data } = await apolloClient.query({
-      query: getFeeds,
-      variables: {
-        skip: 0,
-        take: 5,
-      }
-    })
-    return {
-      props: {
-        data
-      }
+  const { data } = await apolloClient.query({
+    query: getFeeds,
+    variables: {
+      skip: 0,
+      take: 5,
     }
-  } catch (err) {
-    return {
-      props: {
-        error: err
-      }
+  })
+  return {
+    props: {
+      data
     }
   }
 }
