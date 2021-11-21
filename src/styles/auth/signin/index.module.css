@@ -59,7 +59,7 @@
 }
 .leftPart {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
