@@ -1,7 +1,6 @@
 # OpenSearch
 
-> A Collaboration Platform for Open Source Projects
-
+> A Collaboration Platform for Open Source Projects. 
 
 ## Inspiration
 
@@ -31,7 +30,8 @@ First, we brainstormed together and found solution to the topic, then we collabo
 ### Tech Stack
 ![Next JS](https://img.shields.io/badge/Next-black?style=flat-square&logo=next.js&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white)
-![GraphQL](https://img.shields.io/badge/GraphQL-311C87?&style=flat-square&logo=GraphQL&logoColor=white)
+![GraphQL](https://img.shields.io/badge/Apollo%20GraphQL-311C87?&style=flat-square&logo=Apollo%20GraphQL&logoColor=white)
+![Prisma](https://img.shields.io/badge/prisma-1B222D?style=flat-square&logo=prisma&logoColor=white)
 
 ## Challenges we ran into
 The biggest challenge for us was to complete the app in around 36 hours. Beside that, learning Next.js and GraphQL while building the projects was also quite a challenge for us.
