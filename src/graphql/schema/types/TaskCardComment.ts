@@ -20,7 +20,7 @@ export const TaskCardComment = objectType({
 export const TaskCardCommentQueries = extendType({
   type: 'Query',
   definition: (t) => {
-    t.field('comment', {
+    t.field('taskCardComment', {
       type: 'TaskCardComment',
       args: {
         id: intArg(),
@@ -32,7 +32,7 @@ export const TaskCardCommentQueries = extendType({
       },
     })
 
-    t.field('comments', {
+    t.field('taskCardComments', {
       type: list('TaskCardComment'),
       args: {
         skip: intArg(),

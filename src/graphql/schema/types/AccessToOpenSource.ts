@@ -10,7 +10,7 @@ export const AccessToOpenSource = objectType({
   definition(t) {
     t.int('id')
     t.field("openSource", {
-      type: "AccessToOpenSource",
+      type: "OpenSource",
     })
     t.int('openSourceId')
     t.field("user", {
@@ -38,7 +38,11 @@ export const AccessToOpenSourceQueries = extendType({
           },
           include: {
             user: true,
-            openSource: true
+            openSource: {
+              include: {
+                profile: true
+              }
+            }
           }
         })
       },
@@ -62,7 +66,11 @@ export const AccessToOpenSourceQueries = extendType({
           },
           include: {
             user: true,
-            openSource: true
+            openSource: {
+              include: {
+                profile: true
+              }
+            }
           }
         })
       },

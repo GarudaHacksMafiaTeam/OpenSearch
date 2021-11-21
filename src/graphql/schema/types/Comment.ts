@@ -88,6 +88,9 @@ export const CommentMutations = extendType({
             feedId,
             userId
           },
+          include: {
+            user: true
+          }
         })
       },
     })

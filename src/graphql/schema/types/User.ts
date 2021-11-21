@@ -63,6 +63,16 @@ export const UserQueries = extendType({
         return ctx.prisma.user.findUnique({
           include: {
             profile: true,
+            notifications: true,
+            accessToOpenSources: {
+              include: {
+                openSource: {
+                  include: {
+                    profile: true
+                  },
+                }
+              }
+            },
             comments: showComments,
             commentsToComment: showCommentsToComment,
             tasksAccessible: showTasksAccessible,
