@@ -5,7 +5,7 @@ const getApolloClient = () => {
   return new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
-      uri: `http${isLocalHost ? '' : 's'}://localhost:3000/api/graphql`,
+      uri: `${isLocalHost ? 'http://localhost:3000/api/graphql' : 'https://open-search.vercel.app'}`,
       fetch,
     }),
   });

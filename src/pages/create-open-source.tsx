@@ -10,23 +10,25 @@ const CREATE_OPEN_SOURCE = gql`
 `
 
 const CREATE_OPEN_SOURCE_PROFILE = gql`
-  mutation CreateOpenSource {
-    createOpenSource {
+  mutation CreateOpenSource($openSourceId: Int!, $image: String, $description: String, $name: String) {
+    createOpenSourceProfile(openSourceId: $openSourceId, image: $image, description: $description, name: $name) {
       id
     }
   }
 `
 
 const CreateOpenSource = () => {
-  const [createProfile] = useMutation(CREATE_OPEN_SOURCE, { fetchPolicy: "network-only" });
-  const [createOpenSourceProfile] = useMutation(CREATE_OPEN_SOURCE_PROFILE, { fetchPolicy: "network-only" });
+  const [createOpenSource] = useMutation(CREATE_OPEN_SOURCE);
+  const [createOpenSourceProfile] = useMutation(CREATE_OPEN_SOURCE_PROFILE);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     console.log(form.image.files[0]);
     console.log(form.name.value);
     console.log(form.desc.value);
+    const data = await createOpenSource()
+    console.log(data)
     form.image.value = "";
     form.name.value = "";
     form.desc.value = "";
