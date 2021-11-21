@@ -1,7 +1,21 @@
 import styles from 'styles/opensource/task/taskcardpage.module.css'
 import Avatar from 'react-avatar'
+import { useState } from 'react';
+import { BsFillCaretDownFill } from "react-icons/bs";
 
 const TaskCardPage = () => {
+  const [progress, setProgress] = useState("To Do");
+  const [clicked, setClicked] = useState(false);
+
+  // const handleClick = () => {
+  //   setClicked(!clicked);
+  //   console.log(clicked);
+  // }
+  const changeProgress = (progress) => {
+    setProgress(progress);
+    setClicked(false);
+  }
+
   return (
     <div className={styles.base}>
       <div className={styles.heading}>
@@ -16,8 +30,21 @@ const TaskCardPage = () => {
           </p>
         </div>
       </div>
-      <div>
-        Update Progress :
+      <h2 className={styles.dropdownTitle}>
+        Update Progress: 
+      </h2>
+      <div className={styles.dropdown}>
+        <button onClick={() => setClicked(true)} className={styles.dropbtn}>
+          {progress}
+          <div className={styles.iconContainer}>
+            <BsFillCaretDownFill />
+          </div>
+        </button>
+        <div id="myDropdown" className={styles.dropdownContent + ' ' + (clicked ? "" : styles.none)}>
+          <button onClick={() => changeProgress("To Do")}>To Do</button>
+          <button onClick={() => changeProgress("On Going")}>On Going</button>
+          <button onClick={() => changeProgress("Completed")}>Completed</button>
+        </div>
       </div>
       <br />
       <hr />
