@@ -13,10 +13,10 @@ const LandingNavbar = () => {
 			</Link>
 
 			<div className={navstyle.navlink}>
-				<Link href='/'>
+				<Link href='#about'>
 					About
 				</Link>
-				<Link href='/'>
+				<Link href='#action'>
 					How it Works
 				</Link>
 				<Link href='/auth/signin'>

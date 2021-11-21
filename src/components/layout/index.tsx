@@ -40,9 +40,9 @@ const Layout = ({ children }) => {
   if (withoutSidebar) {
     const header = whichHeader(router.pathname)
     return <WithoutSidebar content={children} header={header} />
+  } else {
+    return <WithSidebar content={children} />
   }
-  return <WithSidebar content={children} />
-
 }
 
 const WithSidebar = ({ content }) => (
