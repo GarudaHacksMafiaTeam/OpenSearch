@@ -51,7 +51,7 @@ export const getFeeds = gql`
   }
 `
 
-export async function getStaticProps(_context) {
+export async function getStaticProps() {
   const apolloClient = getApolloClient()
   const { data } = await apolloClient.query({
     query: getFeeds,

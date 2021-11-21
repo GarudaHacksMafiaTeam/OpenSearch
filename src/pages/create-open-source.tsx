@@ -27,7 +27,7 @@ const CreateOpenSource = () => {
     console.log(form.image.files[0]);
     console.log(form.name.value);
     console.log(form.desc.value);
-    const data = await createOpenSource()
+    const { data: { createOpenSource: { id } } } = await createOpenSource()
     console.log(data)
     form.image.value = "";
     form.name.value = "";
