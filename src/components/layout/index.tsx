@@ -9,6 +9,7 @@ import TaskHeader from './TaskHeader'
 
 const nonLayoutedPath = [
   '/auth',
+  '/create-profile',
 ]
 
 const withoutSidebarPath = [

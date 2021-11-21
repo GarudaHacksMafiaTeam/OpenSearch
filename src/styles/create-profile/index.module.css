@@ -1,4 +1,83 @@
-.container {
+.createProfile {
+	color: #fff;
+	/* width: 100vw; */
+	height: 100vh;
+	padding: 2rem;
+	background: linear-gradient(180deg, #273C8A 0%, #000000 100%);
+}
+.title {
+	text-align: center;
+	font-size: 2rem;
+	margin-bottom: 1.5rem;
+}
+.formContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1.5rem;
+}
+.form {
+	width: 40vw;
+}
+.upperSection {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+.avatarContainer {
+	width: 6rem;
+	height: 6rem;
+	margin-right: 2rem;
+}
+.avatarContainer .logo {
+	border-radius: 1.25rem;
+}
+.rightUpperSection {
+	flex-grow: 1;
+}
+.donationLabel {
+  font-size: 1.5rem;
+}
+.inputForm {
+  margin: 5px 0 15px;
+}
+
+.inputForm input {
+  width: 100%;
+  height: 50px;
+  border-radius: 7px;
+  background-color: transparent;
+  border: 3px solid #7BD0FF;
+  font-size: 1.25rem;
+  color: #fff;
+}
+.inputForm textarea {
+  width: 100%;
+  height: 200px;
+  border-radius: 7px;
+  background-color: transparent;
+  border: 3px solid #7BD0FF;
+  font-size: 1.25rem;
+  color: #fff;
+}
+.inputForm input::placeholder {
+  color: inherit;
+}
+.submitPart {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.btnSubmit {
+  width: 130px;
+  height: 47px;
+  background: #7BD0FF;
+  border-radius: 6px;
+  font-size: 24px;
+  color: #000;
+}
+
+/* .container {
 	background: linear-gradient(180deg, #273C8A 0%, #101527 100%);
 	width: 100vw;
 	min-height: 100vh;
@@ -40,4 +119,4 @@
 
 .bioContainer {
 	width: 100%;
-}
+} */
