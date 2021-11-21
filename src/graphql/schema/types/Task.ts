@@ -53,17 +53,19 @@ export const TaskQueries = extendType({
       args: {
         skip: intArg(),
         take: intArg(),
+        openSourceId: intArg(),
         title: stringArg(),
         description: stringArg(),
         showContributors: booleanArg(),
         showCards: booleanArg(),
         showChatMessages: booleanArg()
       },
-      resolve: (_, { skip, take, title, description, showContributors, showCards, showChatMessages }, ctx) => {
+      resolve: (_, { skip, take, openSourceId, title, description, showContributors, showCards, showChatMessages }, ctx) => {
         return ctx.prisma.task.findMany({
           skip,
           take,
           where: {
+            openSourceId,
             title: {
               contains: title,
             },
