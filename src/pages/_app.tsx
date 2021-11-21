@@ -4,6 +4,7 @@ import { AppProps } from 'next/app'
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { NotificationProvider } from 'context/notification'
 import { OpenSourceProvider } from 'context/opensource'
+import { OpenSourceTaskProvider } from 'context/opensourcetask';
 import Layout from 'components/layout/index'
 import '../styles/global.css'
 import Head from 'next/head'
@@ -27,10 +28,12 @@ export default function App({ Component, pageProps }: AppProps) {
         <ApolloProvider client={apolloClient}>
           <NotificationProvider>
             <OpenSourceProvider>
-              <Layout >
-                <NextNProgress height={6} />
-                <Component {...pageProps} />
-              </Layout>
+              <OpenSourceTaskProvider>
+                <Layout >
+                  <NextNProgress height={6} />
+                  <Component {...pageProps} />
+                </Layout>
+              </OpenSourceTaskProvider>
             </OpenSourceProvider>
           </NotificationProvider>
         </ApolloProvider>

@@ -4,10 +4,28 @@ import Head from 'next/head'
 import getApolloClient from 'controller/getApolloClient';
 import { gql, useQuery } from "@apollo/client"
 import { UPDATE_OPEN_SOURCE, useOpenSource } from 'context/opensource';
+import Loading from 'components/index/Loading';
 
+const GET_TASK = gql`
+  query Query($openSourceId: Int) {
+    tasks(openSourceId: $openSourceId) {
+      title
+      description
+    }
+  }
+`
 
 const Task = ({ data }) => {
   const { dispatch } = useOpenSource()
+
+  const { loading, data: response } = useQuery(GET_TASK,
+    {
+      variables: {
+        openSourceId: data.openSourceProfile.openSourceId,
+      }
+    }
+  );
+
   React.useEffect(() => {
     dispatch({
       type: UPDATE_OPEN_SOURCE,
@@ -18,12 +36,16 @@ const Task = ({ data }) => {
     })
   }, [])
 
+  if (loading) {
+    return <Loading />
+  }
+
   return (
     <>
       <Head>
         <title>Feeds | OpenSearch</title>
       </Head>
-      {[1].map((x, index) => <TaskBlock key={index} id={x} />)}
+      {response.tasks.map((x, index) => <TaskBlock key={index} id={x} />)}
     </>
   );
 }
@@ -46,6 +68,8 @@ export async function getServerSideProps({ query }) {
       query: GET_OPEN_SOURCE,
       variables: { openSourceId: Number(query.open_source_id) }
     })
+    console.log(data)
+    console.log(query.open_source_id)
     return {
       props: {
         data: data,

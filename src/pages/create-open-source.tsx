@@ -1,6 +1,26 @@
+import { gql, useMutation } from "@apollo/client";
 import styles from "styles/create-open-source/index.module.css"
 
+const CREATE_OPEN_SOURCE = gql`
+  mutation CreateOpenSource {
+    createOpenSource {
+      id
+    }
+  }
+`
+
+const CREATE_OPEN_SOURCE_PROFILE = gql`
+  mutation CreateOpenSource {
+    createOpenSource {
+      id
+    }
+  }
+`
+
 const CreateOpenSource = () => {
+  const [createProfile] = useMutation(CREATE_OPEN_SOURCE, { fetchPolicy: "network-only" });
+  const [createOpenSourceProfile] = useMutation(CREATE_OPEN_SOURCE_PROFILE, { fetchPolicy: "network-only" });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;

@@ -23,8 +23,20 @@ const CREATE_PROFILE = gql`
   }
 `
 
+const UPDATE_PROFILE = gql`
+  mutation UpdateUserProfile($userId: Int!, $description: String, $name: String, $image: String) {
+    updateUserProfile(userId: $userId, description: $description) {
+      id
+    }
+    updateUser(id: $userId, name: $name, image: $image) {
+      id
+    }
+  }
+`
+
 function Profile({ data: { user }, error }) {
   const [createProfile] = useMutation(CREATE_PROFILE, { fetchPolicy: "network-only" });
+  const [updateProfile] = useMutation(UPDATE_PROFILE, { fetchPolicy: "network-only" });
   const router = useRouter()
   const [show, setShow] = useState(false);
 
@@ -52,11 +64,17 @@ function Profile({ data: { user }, error }) {
       name,
       image,
       userId: user.id,
-      email: user.email,
     }
-    createProfile({
-      variables
-    })
+
+    if (user.profile) {
+      createProfile({
+        variables
+      })
+    } else {
+      updateProfile({
+        variables
+      })
+    }
     form.image.value = '';
     form.name.value = '';
     form.desc.value = '';

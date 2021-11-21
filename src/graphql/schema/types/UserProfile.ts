@@ -31,17 +31,13 @@ export const UserProfileQueries = extendType({
       args: {
         skip: intArg(),
         take: intArg(),
-        name: stringArg(),
         description: stringArg()
       },
-      resolve: (_, { skip, take, name, description }, ctx) => {
+      resolve: (_, { skip, take, description }, ctx) => {
         return ctx.prisma.userProfile.findMany({
           skip,
           take,
           where: {
-            name: {
-              contains: name
-            },
             description: {
               contains: description
             }
@@ -59,17 +55,13 @@ export const UserProfileMutations = extendType({
       type: 'UserProfile',
       args: {
         userId: nonNull(intArg()),
-        image: stringArg(),
         description: stringArg(),
-        name: stringArg(),
       },
-      resolve: (_, { userId, image, description, name }, ctx) => {
+      resolve: (_, { userId, description }, ctx) => {
         return ctx.prisma.userProfile.create({
           data: {
             userId,
-            image,
             description,
-            name
           },
         })
       },
@@ -78,12 +70,10 @@ export const UserProfileMutations = extendType({
       type: 'UserProfile',
       args: {
         userId: intArg(),
-        image: stringArg(),
         description: stringArg(),
-        name: stringArg(),
         id: intArg(),
       },
-      resolve: (_, { id, userId, name, description, image }, ctx) => {
+      resolve: (_, { id, userId, description }, ctx) => {
         return ctx.prisma.userProfile.update({
           where: {
             id,
@@ -91,8 +81,6 @@ export const UserProfileMutations = extendType({
           },
           data: {
             description,
-            name,
-            image
           }
         })
       },

@@ -2,6 +2,8 @@ import styles from "styles/opensource/index.module.css"
 import { useRouter } from "next/router";
 import Avatar from 'react-avatar'
 import Link from "next/link";
+import { useOpenSourceTask } from "context/opensourcetask"
+import { useOpenSource } from "context/opensource";
 
 const toPath = (to, name) => ({ name, to })
 const paths = [
@@ -10,17 +12,14 @@ const paths = [
 ]
 
 const OpenSourceProfile = () => {
-  const taskData = {
-    name: "RFC #1",
-    image: "https://picsum.photos/200",
-    description: "To create a better dev experience",
-  }
+  const { state: taskData } = useOpenSourceTask()
+  const { state: openSourceData } = useOpenSource()
 
   return (
     <div>
       <div className={styles.openSourceHeader}>
         <div className={styles.iconContainer}>
-          <Avatar src={taskData.image} size='12rem' />
+          <Avatar src={openSourceData.image} size='12rem' />
         </div>
         <div className={styles.openSourceInfo}>
           <h1>{taskData.name}</h1>

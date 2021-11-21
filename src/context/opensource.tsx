@@ -17,7 +17,6 @@ const openSourceReducers = (state, action) => {
         description,
         id
       } = action
-      console.log(action)
       return { ...state, name, image, description, id }
     }
     default: {
