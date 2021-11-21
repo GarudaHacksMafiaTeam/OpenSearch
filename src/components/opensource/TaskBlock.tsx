@@ -2,32 +2,58 @@ import React from 'react'
 import styles from 'styles/opensource/task/taskblock.module.css'
 import Avatar from 'react-avatar'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
+import ReactModal from 'react-modal';
 
 const TaskCard = ({ id }) => {
-  const router = useRouter()
+  const router = useRouter();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+  }
 
   return <div className={styles.base}>
     <div className={styles.heading}>
       <Avatar size="3rem" className={styles.logo} />
       <div>
         <h1>
-          <strong>Name</strong>
+          <strong>OpenSearch</strong>
         </h1>
         <h2>
-          Description of the opensource
+          RFC  #1
         </h2>
       </div>
     </div>
     <p>
-      amet sed vel error aspernatur. reiciendis cum eligendi voluptatem praesentium voluptas nihil facere.
-      cupiditate eligendi quos dignissimos autem aut amet nostrum. amet sed vel error aspernatur. reiciendis cum
-      eligendivoluptatem praesentium voluptas nihil facere. Cupiditate eligendi quos dignissimos autem aut amet
+      Adding version control integration.
     </p>
     <br />
     <br />
     <div className={styles.buttonWrapper}>
-      <button className={styles.joinbtn} onClick={() => router.push(`${router.asPath}/${id}`)}>Join Now</button>
+      <button className={styles.joinbtn} onClick={() => setShow(true)}>Join Now</button>
     </div>
+
+    <ReactModal
+      isOpen={show}
+      contentLabel="Send Request"
+      className={styles.modal}
+      overlayClassName={styles.overlay}
+    >
+      <div className={styles.section}>
+        <h1>
+          Sent request to join this task?
+        </h1>
+      </div>
+      <div className={styles.section}>
+        <div className={styles.submitPart}>
+          <button onClick={handleClose} className={styles.btn + " " + styles.btnSubmit}>
+            Close
+          </button>
+          <button type="submit" className={styles.btn + " " + styles.btnSubmit} onClick={handleClose}>Send</button>
+        </div>
+      </div>
+    </ReactModal>
   </div>
 }
 
