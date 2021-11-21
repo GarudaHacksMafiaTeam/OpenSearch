@@ -4,10 +4,10 @@ const CreateOpenSource = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    console.log(form.owner.value);
+    console.log(form.image.files[0]);
     console.log(form.name.value);
     console.log(form.desc.value);
-    form.owner.value = "";
+    form.image.value = "";
     form.name.value = "";
     form.desc.value = "";
   }
@@ -20,10 +20,11 @@ const CreateOpenSource = () => {
       <div className={styles.createOpenSourceBox}>
         <form className={styles.form} method="post" onSubmit={(e) => handleSubmit(e)}>
           <label className={styles.createLabel}>
-            Open Source Owner
+            Open Source Icon
           </label>
           <div className={styles.inputForm}>
-            <input type="text" name="owner" id="owner" />
+            <input type="file" name="image" id="image" className={styles.customFileInput} >
+            </input>
           </div>
           <label className={styles.createLabel}>
             Open Source Name
@@ -35,7 +36,7 @@ const CreateOpenSource = () => {
             Description
           </label>
           <div className={styles.inputForm}>
-            <textarea name="desc" id="desc" />
+            <textarea className={styles.inputForm} name="desc" id="desc" />
           </div>
           <div className={styles.submitPart}>
             <button type="submit" className={styles.btn + " " + styles.btnSubmit}>Send</button>

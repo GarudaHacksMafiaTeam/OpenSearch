@@ -29,6 +29,14 @@
   color: #fff;
   margin-bottom: 1rem;
 }
+.customFileInput {
+  color: transparent;
+  text-align: center;
+  padding: 5px 10px;
+}
+.customFileInput::-webkit-file-upload-button {
+  display: none;
+}
 .inputForm textarea {
   width: 100%;
   height: 200px;
