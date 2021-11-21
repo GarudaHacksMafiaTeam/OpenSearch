@@ -1,14 +1,31 @@
+.sideBarContainer {
+  width: 20vw;
+  z-index: 2;
+  position: absolute;
+  transition: all 1s ease-in-out;
+}
+.plainNavbar {
+  display: flex;
+}
+.popup {
+  color: white;
+  width: 5rem;
+}
 .base {
   position: sticky;
   top: 0;
   background-color: transparent;
   display:flex;
-  align-items: center;
-  justify-content: space-between;
   padding:1rem;
   backdrop-filter:blur(5px);
 }
-
+.navbarContainer {
+  display: flex;
+  flex-grow: 1;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+}
 .brand {
   font-size:1.25rem;
 }
@@ -36,6 +53,9 @@
   width: 100vw;
   height: 100vh;
   backdrop-filter: blur(5px);
-  background-color: red;
-  position: absolute;
+  /* background-color: red; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
