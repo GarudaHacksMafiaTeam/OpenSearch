@@ -20,8 +20,9 @@ const Feeds = ({ data }) => {
         totalComments={feed.comments.length}
         totalLikes={feed.reactions.length}
         name={feed.openSource.profile.name}
-        description={feed.openSource.profile.description}
+        description={feed.title}
         content={feed.content}
+        image={feed.openSource.profile.image}
       />)
     }
   </div>
@@ -37,7 +38,6 @@ export const getFeeds = gql`
         profile {
           image
           description
-          name
           openSourceId
         }
       }

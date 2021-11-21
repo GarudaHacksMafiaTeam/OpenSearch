@@ -1,11 +1,36 @@
 import React from 'react'
-import AboutOpenSource from 'components/opensource/AboutOpenSource';
+import FeedCard from 'components/feeds/FeedCard'
 import getApolloClient from 'controller/getApolloClient';
-import { gql } from "@apollo/client"
+import { gql, useQuery } from "@apollo/client"
 import { UPDATE_OPEN_SOURCE, useOpenSource } from 'context/opensource';
+import Loading from 'components/index/Loading';
 
-const OpenSourceProfile = ({ data }) => {
+const GET_FEEDS = gql`
+  query Feeds($openSourceId: Int) {
+    feeds(openSourceId: $openSourceId) {
+      id
+      title
+      content
+      comments {
+        id
+      }
+      reactions {
+        id
+      }
+    }
+  }
+`
+
+const OpenSourceProfile = ({ data, id }) => {
   const { dispatch } = useOpenSource()
+  const { data: response, loading } = useQuery(
+    GET_FEEDS,
+    {
+      notifyOnNetworkStatusChange: true,
+      variables: { openSourceId: id }
+    }
+  )
+
   React.useEffect(() => {
     dispatch({
       type: UPDATE_OPEN_SOURCE,
@@ -15,7 +40,28 @@ const OpenSourceProfile = ({ data }) => {
       id: data.openSourceProfile.openSourceId,
     })
   }, [])
-  return <AboutOpenSource />
+
+  if (loading) {
+    return <Loading />
+  }
+
+  return (
+    <>
+      {response.feeds.map((feed, index) => (
+        <FeedCard
+          id={feed.id}
+          description={feed.title}
+          content={feed.content}
+          key={index}
+          name={data.openSourceProfile.name}
+          image={data.openSourceProfile.image}
+          totalLikes={feed.reactions.length}
+          totalComments={feed.comments.length}
+        />
+      )
+      )}
+    </>
+  );
 }
 
 export const GET_OPEN_SOURCE = gql`
@@ -38,7 +84,8 @@ export async function getServerSideProps({ query }) {
     })
     return {
       props: {
-        data: data
+        data: data,
+        id: Number(query.open_source_id)
       }
     }
   } catch (err) {
@@ -49,5 +96,6 @@ export async function getServerSideProps({ query }) {
     }
   }
 }
+
 
 export default OpenSourceProfile;
