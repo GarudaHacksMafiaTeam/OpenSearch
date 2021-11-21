@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styles from 'styles/feeds/feedcontent.module.css'
 import Avatar from 'react-avatar'
 import { BiHeart, BiComment } from 'react-icons/bi'
@@ -35,10 +35,9 @@ export const GET_FEED = gql`
   }
 `
 
-// Kalau bisa page cuman representatif dari struktur page dan ngga pake api client 
 const FeedContent = () => {
   const router = useRouter()
-  const { loading, error, data, refetch } = useQuery(GET_FEED,
+  const { loading, data } = useQuery(GET_FEED,
     {
       variables: {
         id: Number(router.query.id)
@@ -50,7 +49,7 @@ const FeedContent = () => {
   }
   return <div className={styles.base} >
     <Content feed={data.feed} />
-    <UserInput feedId={data.feed.id} refetch={refetch} />
+    <UserInput feedId={data.feed.id} />
     {data.feed.comments.map((comment, index) => <Message comment={comment} key={index} />)}
   </div>
 }
@@ -104,11 +103,13 @@ export const CREATE_COMMENT = gql`
   }
 `
 
-const UserInput = ({ refetch, feedId }) => {
-  const [createComment, { data: mutationData, loading: mutationLoading }] = useMutation(CREATE_COMMENT, { fetchPolicy: "network-only" });
+const UserInput = ({ feedId }) => {
+  const [createComment] = useMutation(CREATE_COMMENT, { fetchPolicy: "network-only" });
   const [getUser, { data, loading, error }] = useLazyQuery(GET_USER, { fetchPolicy: "network-only", nextFetchPolicy: "network-only" });
   const [notifyChange, setNotifyChange] = React.useState(false)
   const [message, setMessage] = React.useState("")
+  const router = useRouter()
+
   React.useEffect(() => {
     if (data) {
       createComment({
@@ -119,12 +120,10 @@ const UserInput = ({ refetch, feedId }) => {
         }
       })
       setMessage('')
+      router.reload()
     }
   }, [data])
 
-  React.useEffect(() => {
-    refetch()
-  }, [mutationData, mutationLoading, loading])
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
@@ -139,6 +138,7 @@ const UserInput = ({ refetch, feedId }) => {
       alert(err.toString())
     }
   }
+
   return (
     <div className={styles.userInput}>
       <Avatar round size="2.5rem" />

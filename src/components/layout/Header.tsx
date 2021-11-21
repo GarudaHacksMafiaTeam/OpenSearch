@@ -2,6 +2,7 @@ import styles from "styles/opensource/index.module.css"
 import { useRouter } from "next/router";
 import Avatar from 'react-avatar'
 import Link from "next/link";
+import { useOpenSource } from "context/opensource";
 
 const toPath = (to, name) => ({ name, to })
 const paths = [
@@ -12,12 +13,7 @@ const paths = [
 ]
 
 const OpenSourceProfile = () => {
-  const openSourceData = {
-    name: "Blender Foundation",
-    image: "https://picsum.photos/200",
-    description: "ini blender Foundation gan Amet sed vel error aspernatur. Reiciendis cum eligendi voluptatem praesentium voluptas nihil facere. Cupiditate eligendi quos dignissimos autem aut amet nostrum. Amet sed vel error aspernatur.",
-    countContributor: "1k+",
-  }
+  const { state: openSourceData } = useOpenSource()
 
   return (
     <div>
@@ -27,7 +23,7 @@ const OpenSourceProfile = () => {
         </div>
         <div className={styles.openSourceInfo}>
           <h1>{openSourceData.name}</h1>
-          <p>{openSourceData.countContributor} people contributed</p>
+          <p>{openSourceData.description}</p>
           <div className={styles.optionsContainer}>
             {paths.map((path, index) => <ProfileLink path={path.to} name={path.name} key={index} />)}
           </div>

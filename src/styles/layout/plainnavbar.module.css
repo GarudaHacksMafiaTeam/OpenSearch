@@ -27,3 +27,15 @@
 .notifContainer {
   position: relative;
 }
+.sidebarcontainer {
+  position: fixed;
+  z-index: -1;
+  width: 15vw;
+}
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+  background-color: red;
+  position: absolute;
+}

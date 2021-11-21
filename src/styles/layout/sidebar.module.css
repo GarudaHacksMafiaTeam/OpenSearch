@@ -1,6 +1,6 @@
 .base {
   min-height:100vh;
-  min-width: 15vw;
+  width: 15vw;
   background-color: #191E37;
   overflow: hidden;
 }
