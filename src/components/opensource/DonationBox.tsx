@@ -1,9 +1,16 @@
 import styles from "styles/opensource/donationbox.module.css"
 
 const DonationBox = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    console.log(form.nominal.value);
+    console.log(form.desc.value);
+  }
+
   return (
     <div className={styles.donationBox}>
-      <form className={styles.form} method="post" action="/">
+      <form className={styles.form} method="post" onSubmit={(e) => handleSubmit(e)}>
         <label className={styles.donationLabel}>
           Nominal Donasi: 
         </label>
