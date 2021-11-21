@@ -3,6 +3,7 @@ import { Provider } from 'next-auth/client'
 import { AppProps } from 'next/app'
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { NotificationProvider } from 'context/notification'
+import { OpenSourceProvider } from 'context/opensource'
 import Layout from 'components/layout/index'
 import '../styles/global.css'
 import Head from 'next/head'
@@ -24,9 +25,11 @@ export default function App({ Component, pageProps }: AppProps) {
       <Provider session={pageProps.session}>
         <ApolloProvider client={apolloClient}>
           <NotificationProvider>
-            <Layout session={pageProps.session}>
-              <Component {...pageProps} />
-            </Layout>
+            <OpenSourceProvider>
+              <Layout session={pageProps.session}>
+                <Component {...pageProps} />
+              </Layout>
+            </OpenSourceProvider>
           </NotificationProvider>
         </ApolloProvider>
       </Provider>
