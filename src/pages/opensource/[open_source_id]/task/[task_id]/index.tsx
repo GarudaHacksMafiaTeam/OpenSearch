@@ -1,7 +1,9 @@
 import styles from 'styles/opensource/task/taskpage.module.css'
 import Masonry from 'react-masonry-css'
-import {useState} from 'react'
 import TaskCard from 'components/opensource/TaskCard'
+import { useState } from 'react'
+// import Modal from 'react-bootstrap/Modal'
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactModal from 'react-modal';
 
 const Task = () => {
@@ -38,6 +40,7 @@ const containerTitleClass = (type) => {
   }
 }
 
+
 const CardContainer = ({ title, type }) => {
   const [show, setShow] = useState(false);
 
@@ -50,6 +53,8 @@ const CardContainer = ({ title, type }) => {
     console.log(form.desc.value);
     form.name.value = '';
     form.desc.value = '';
+    // IF CLOSED, THEN THE CONSOLE NOT GONNA OUTPUT, IDK WHY
+    // handleClose();
   }
   
   return (
