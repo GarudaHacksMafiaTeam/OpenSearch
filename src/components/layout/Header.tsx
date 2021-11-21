@@ -6,8 +6,7 @@ import { useOpenSource } from "context/opensource";
 
 const toPath = (to, name) => ({ name, to })
 const paths = [
-  toPath("", "About"),
-  toPath("/feeds", "Feeds"),
+  toPath("", "Feeds"),
   toPath("/task", "Task"),
   toPath("/crowdfunding", "Crowd Funding")
 ]
