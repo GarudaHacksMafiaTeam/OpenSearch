@@ -4,12 +4,12 @@ import Avatar from 'react-avatar'
 import { BiHeart, BiComment } from 'react-icons/bi'
 import { useRouter } from 'next/router'
 
-const FeedCard = ({ id, name, description, content, totalLikes, totalComments }) => {
+const FeedCard = ({ id, name, description, content, totalLikes, totalComments, image }) => {
   const router = useRouter()
 
   return <div className={styles.base} onClick={() => router.push(`/feeds/${id}`)}>
     <div className={styles.heading}>
-      <Avatar size="3rem" className={styles.logo} />
+      <Avatar src={image} size="3rem" className={styles.logo} />
       <div>
         <h1>
           <strong>{name}</strong>
