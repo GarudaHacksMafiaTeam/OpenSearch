@@ -4,9 +4,23 @@ import Masonry from 'react-masonry-css'
 import ExploreCard from 'components/explore/ExploreCard'
 import Head from 'next/head'
 import getApolloClient from 'controller/getApolloClient'
-import { gql } from "@apollo/client"
+import { gql, useQuery } from "@apollo/client"
+import Loading from 'components/index/Loading'
 
-const Explore = ({ data }) => {
+const Explore = () => {
+  const { data: response, loading } = useQuery(
+    getOpenSourceProfiles,
+    {
+      notifyOnNetworkStatusChange: true,
+      variables: {
+        skip: 0,
+        take: 5,
+      }
+    }
+  )
+  if (loading) {
+    return <Loading />
+  }
   return <>
     <Head>
       <title>Explore | OpenSearch</title>
@@ -16,7 +30,7 @@ const Explore = ({ data }) => {
       className={styles.myMasonryGrid}
       columnClassName={styles.myMasonryGridColumn}
     >
-      {data.openSourceProfiles.map((openSourceProfile, idx) => <ExploreCard key={idx} openSourceProfile={openSourceProfile} id={openSourceProfile.openSourceId} />)}
+      {response.openSourceProfiles.map((openSourceProfile, idx) => <ExploreCard key={idx} openSourceProfile={openSourceProfile} id={openSourceProfile.openSourceId} />)}
     </Masonry>
   </>
 }
@@ -31,22 +45,6 @@ const getOpenSourceProfiles = gql`
     }
   }
 `
-
-export async function getStaticProps() {
-  const apolloClient = getApolloClient()
-  const { data } = await apolloClient.query({
-    query: getOpenSourceProfiles,
-    variables: {
-      skip: 0,
-      take: 5,
-    }
-  })
-  return {
-    props: {
-      data: data
-    }
-  }
-}
 
 
 export default Explore

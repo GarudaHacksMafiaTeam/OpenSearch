@@ -1,5 +1,7 @@
 import { gql, useMutation } from "@apollo/client";
 import styles from "styles/create-open-source/index.module.css"
+import axios from 'axios'
+import { useRouter } from "next/router";
 
 const CREATE_OPEN_SOURCE = gql`
   mutation CreateOpenSource {
@@ -8,6 +10,8 @@ const CREATE_OPEN_SOURCE = gql`
     }
   }
 `
+
+
 
 const CREATE_OPEN_SOURCE_PROFILE = gql`
   mutation CreateOpenSource($openSourceId: Int!, $image: String, $description: String, $name: String) {
@@ -20,15 +24,32 @@ const CREATE_OPEN_SOURCE_PROFILE = gql`
 const CreateOpenSource = () => {
   const [createOpenSource] = useMutation(CREATE_OPEN_SOURCE);
   const [createOpenSourceProfile] = useMutation(CREATE_OPEN_SOURCE_PROFILE);
+  const router = useRouter()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
-    console.log(form.image.files[0]);
-    console.log(form.name.value);
-    console.log(form.desc.value);
+    const name = form.name.value
+    const description = form.desc.value
     const { data: { createOpenSource: { id } } } = await createOpenSource()
-    console.log(data)
+
+    const imgFile = form.image.files[0];
+    const imgFormData = new FormData()
+    imgFormData.append('file', imgFile)
+    imgFormData.append("upload_preset", "h4oea9l0")
+    const res = await axios.post('https://api.cloudinary.com/v1_1/dncbtxucm/image/upload', imgFormData)
+    const image = res.data.url
+
+    await createOpenSourceProfile({
+      variables: {
+        openSourceId: id,
+        image,
+        description,
+        name
+      }
+    })
+
+    router.push(`/opensource/${id}`)
     form.image.value = "";
     form.name.value = "";
     form.desc.value = "";

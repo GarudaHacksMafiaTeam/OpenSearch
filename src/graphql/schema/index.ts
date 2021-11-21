@@ -42,8 +42,4 @@ export const baseSchema = makeSchema({
   },
 })
 
-export const schema = (
-  process.env.NODE_ENV === 'production' ?
-    applyMiddleware(baseSchema, permissions) :
-    baseSchema
-)
+export const schema = baseSchema
