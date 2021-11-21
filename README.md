@@ -2,11 +2,6 @@
 
 > A Collaboration Platform for Open Source Projects
 
-![Next JS](https://img.shields.io/badge/Next-black?style=flat-square&logo=next.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white)
-![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=flat-square&logo=eslint&logoColor=white)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
 
 ## Inspiration
 
@@ -16,7 +11,7 @@ The best way to learn software development is through real-life projects, especi
 
 Here we build OpenSearch, a platform that allows user to build their own personal opensource project, manage their opensource task, and even let them find any opensource project that they would like to join so they could level up their skills.
 
-## Our Features:
+## Features
 
 ### Explore
 Explore our curated list of open source projects. You can also find one you like to contribute to.
@@ -25,32 +20,27 @@ Explore our curated list of open source projects. You can also find one you like
 See updates from an open source project. Contributors can also leave like and comments in the feeds.
 
 ### Crowdfunding
-Even though open source projects are free to use, they also need funding for maintenance. 
-
+Even though open source projects are free to use, they also need funding for maintenance. Crowdfunding sections provide payment methods for contributors to help open source fundings.
 
 ### RFC
-
-
-
+Organize tasks and collaborate with other open source contributors.
 
 ## How we built it
-
-### Starter template
-
-[Fullstack starter with next-auth, prisma, next.js and graphql-shield](https://github.com/wangel13/prisma-next-auth-graphql-starter) by wangel13
+First, we brainstormed together and found solution to the topic, then we collaborate to do the UI/UX design using Figma, database schema, and develop it with Next.js. We often have online meets to discuss through the project. For development, we use  [fullstack starter with next-auth, prisma, next.js and graphql-shield](https://github.com/wangel13/prisma-next-auth-graphql-starter) by [wangel13](https://github.com/wangel13) as our starter template. After that, we execute our plan for development.
 
 ### Tech Stack
-- Next.js
-- GraphQL
-- Prisma
+![Next JS](https://img.shields.io/badge/Next-black?style=flat-square&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white)
+![GraphQL](https://img.shields.io/badge/GraphQL-311C87?&style=flat-square&logo=GraphQL&logoColor=white)
 
 ## Challenges we ran into
+The biggest challenge for us was to complete the app in around 36 hours. Beside that, learning Next.js and GraphQL while building the projects was also quite a challenge for us.
 
 ## Accomplishments that we're proud of
-
+We are proud to make a solution to help developing open source community and complete the MVP for our project from design until product.
 
 ## What we learned
-
+After 36 hours building this project. We  learned a lot about Next.js and some new frameworks and tools like GraphQL, Prisma, and front-end design.
 
 ## What's next?
-In the future, we hope that we could put OpenSearch live and help lots of people to collaborate in Open-Source Projects.
+In the future, we hope that we could put deploy OpenSearch to public and help lots of people to collaborate in Open-Source Projects.
