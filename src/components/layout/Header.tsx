@@ -8,7 +8,8 @@ const toPath = (to, name) => ({ name, to })
 const paths = [
   toPath("", "Feeds"),
   toPath("/task", "Task"),
-  toPath("/crowdfunding", "Crowd Funding")
+  toPath("/crowdfunding", "Crowd Funding"),
+  toPath("/request", "Request"),
 ]
 
 const OpenSourceProfile = () => {
