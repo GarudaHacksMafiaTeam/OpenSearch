@@ -1,0 +1,12 @@
+.myMasonryGrid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: -2rem; 
+  width: auto;
+}
+
+.myMasonryGridColumn {
+  padding-left: 2rem; 
+  background-clip: padding-box;
+}
