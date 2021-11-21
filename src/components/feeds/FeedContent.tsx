@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import styles from 'styles/feeds/feedcontent.module.css'
 import Avatar from 'react-avatar'
 import { BiHeart, BiComment } from 'react-icons/bi'
